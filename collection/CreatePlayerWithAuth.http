@@ -1,0 +1,47 @@
+### Create a new player with authentication (Admin)
+POST http://localhost:8080/v1/players/create
+Content-Type: application/json
+Authorization: Basic YWRtaW46YWRtaW4xMjM=
+
+{
+  "playerId": "auth001",
+  "firstName": "Auth",
+  "lastName": "User",
+  "givenName": "Authentication Test",
+  "birthYear": "1990",
+  "birthMonth": "05",
+  "birthDay": "15",
+  "birthCountry": "USA",
+  "birthState": "CA",
+  "birthCity": "Los Angeles",
+  "weight": "180",
+  "height": "72",
+  "bats": "R",
+  "throwStats": "R",
+  "debut": "2015-04-01",
+  "finalGame": "2023-09-30",
+  "retroId": "auth001",
+  "bbrefId": "auth001"
+}
+
+### Create a new player with authentication (User)
+POST http://localhost:8080/v1/players/create
+Content-Type: application/json
+Authorization: Basic dXNlcjp1c2VyMTIz
+
+{
+  "playerId": "user001",
+  "firstName": "Regular",
+  "lastName": "User",
+  "birthYear": "1995",
+  "weight": "175",
+  "height": "70"
+}
+
+### Get all players with authentication
+GET http://localhost:8080/v1/players
+Authorization: Basic YWRtaW46YWRtaW4xMjM=
+
+### Get specific player with authentication
+GET http://localhost:8080/v1/players/auth001
+Authorization: Basic YWRtaW46YWRtaW4xMjM= 

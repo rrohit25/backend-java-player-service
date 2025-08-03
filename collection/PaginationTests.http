@@ -1,0 +1,42 @@
+### Get players with pagination (default: page 0, size 10)
+GET http://localhost:8080/v1/players/paginated
+Authorization: Basic YWRtaW46YWRtaW4xMjM=
+
+### Get players with pagination (page 0, size 5)
+GET http://localhost:8080/v1/players/paginated?page=0&size=5
+Authorization: Basic YWRtaW46YWRtaW4xMjM=
+
+### Get players with pagination (page 1, size 5)
+GET http://localhost:8080/v1/players/paginated?page=1&size=5
+Authorization: Basic YWRtaW46YWRtaW4xMjM=
+
+### Get players with pagination and sorting by firstName (ascending)
+GET http://localhost:8080/v1/players/paginated?page=0&size=10&sortBy=firstName&sortDirection=asc
+Authorization: Basic YWRtaW46YWRtaW4xMjM=
+
+### Get players with pagination and sorting by firstName (descending)
+GET http://localhost:8080/v1/players/paginated?page=0&size=10&sortBy=firstName&sortDirection=desc
+Authorization: Basic YWRtaW46YWRtaW4xMjM=
+
+### Get players with pagination and sorting by lastName (ascending)
+GET http://localhost:8080/v1/players/paginated?page=0&size=10&sortBy=lastName&sortDirection=asc
+Authorization: Basic YWRtaW46YWRtaW4xMjM=
+
+### Get players with pagination and sorting by birthYear (descending)
+GET http://localhost:8080/v1/players/paginated?page=0&size=10&sortBy=birthYear&sortDirection=desc
+Authorization: Basic YWRtaW46YWRtaW4xMjM=
+
+### Test pagination with large page size (should be capped at 100)
+GET http://localhost:8080/v1/players/paginated?page=0&size=200
+Authorization: Basic YWRtaW46YWRtaW4xMjM=
+
+### Test pagination with negative page (should default to 0)
+GET http://localhost:8080/v1/players/paginated?page=-1&size=10
+Authorization: Basic YWRtaW46YWRtaW4xMjM=
+
+### Test pagination with zero size (should default to 1)
+GET http://localhost:8080/v1/players/paginated?page=0&size=0
+Authorization: Basic YWRtaW46YWRtaW4xMjM=
+
+### Test pagination without authentication (should return 401)
+GET http://localhost:8080/v1/players/paginated?page=0&size=10 

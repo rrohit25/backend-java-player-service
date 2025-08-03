@@ -1,0 +1,61 @@
+### Unified Players Endpoint Tests
+### This endpoint now handles both all players and paginated requests
+
+### 1. Get All Players (no parameters)
+GET http://localhost:8080/v1/players/paginated
+Authorization: Basic YWRtaW46YWRtaW4xMjM=
+
+###
+
+### 2. Get All Players (explicitly no parameters)
+GET http://localhost:8080/v1/players/paginated?
+Authorization: Basic YWRtaW46YWRtaW4xMjM=
+
+###
+
+### 3. Get Paginated Players (page 0, size 5)
+GET http://localhost:8080/v1/players/paginated?page=0&size=5
+Authorization: Basic YWRtaW46YWRtaW4xMjM=
+
+###
+
+### 4. Get Paginated Players (page 1, size 5)
+GET http://localhost:8080/v1/players/paginated?page=1&size=5
+Authorization: Basic YWRtaW46YWRtaW4xMjM=
+
+###
+
+### 5. Get Paginated Players (only page parameter - uses default size 10)
+GET http://localhost:8080/v1/players/paginated?page=0
+Authorization: Basic YWRtaW46YWRtaW4xMjM=
+
+###
+
+### 6. Get Paginated Players (only size parameter - uses default page 0)
+GET http://localhost:8080/v1/players/paginated?size=3
+Authorization: Basic YWRtaW46YWRtaW4xMjM=
+
+###
+
+### 7. Get Paginated Players with Sorting (by firstName, descending)
+GET http://localhost:8080/v1/players/paginated?page=0&size=5&sortBy=firstName&sortDirection=desc
+Authorization: Basic YWRtaW46YWRtaW4xMjM=
+
+###
+
+### 8. Get Paginated Players with Sorting (by lastName, ascending)
+GET http://localhost:8080/v1/players/paginated?page=0&size=5&sortBy=lastName&sortDirection=asc
+Authorization: Basic YWRtaW46YWRtaW4xMjM=
+
+###
+
+### 9. Test without authentication (should return 401)
+GET http://localhost:8080/v1/players/paginated?page=0&size=5
+
+###
+
+### 10. Test with wrong authentication (should return 401)
+GET http://localhost:8080/v1/players/paginated?page=0&size=5
+Authorization: Basic d3Jvbmc6d3Jvbmc=
+
+### 

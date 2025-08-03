@@ -3,23 +3,42 @@ spring:
     driverClassName: org.h2.Driver
     username: sa
     password:
-    url: jdbc:h2:mem:playerdb
+    url: jdbc:h2:file:./data/playerdb
   jpa:
     hibernate:
       ddl-auto: none
     properties:
       hibernate:
         dialect: org.hibernate.dialect.H2Dialect
+        # Enable SQL logging to see actual queries
+        show_sql: true
+        format_sql: true
+        use_sql_comments: true
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
   config:
     use-legacy-processing: true
   h2:
     console:
       enabled: true
+  # Security Configuration
+  security:
+    user:
+      name: admin
+      password: admin123
 
 server:
   port: 8080
   include-debug-info: true
   error:
     include-message: always
+
+# Logging configuration to see SQL queries
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
 
 
